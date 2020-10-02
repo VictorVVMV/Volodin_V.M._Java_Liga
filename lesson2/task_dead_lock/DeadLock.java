@@ -18,20 +18,20 @@ public class DeadLock {
 
     public void bow(Friend bower) {
       /**
-      Во избежание взаимной блокировки убираем избыточную синхронизацию со всего метода и
-       добавляем код в блок synchronized, таким образом, избегаем deadlock-а
+       Во избежание взаимной блокировки убираем избыточную синхронизацию со всего метода и
+       добавляем код в блок synchronized(синхронизируем по текущему объекту), таким образом, избегаем deadlock-а
        */
-      synchronized (bower) {
+      synchronized (this) {
         System.out.format("%s: %s подстрелил меня!\n", this.name, bower.getName());
         System.out.format("%s: стреляю в ответ!\n", this.name);
       }
       bower.bowBack(this);
     }
     /**
-      По аналогии с кодом выше, снимаем синхронизацию со всего метода и добавляем блок synchronized
+     По аналогии с кодом выше, снимаем синхронизацию со всего метода и добавляем блок synchronized
      */
     public void bowBack(Friend bower) {
-      synchronized (bower) {
+      synchronized (this) {
         System.out.format("%s: %s подстрелил меня!\n", this.name, bower.getName());
       }
     }
@@ -50,4 +50,3 @@ public class DeadLock {
     new Thread(() -> gaston.bow(alphonse)).start();
   }
 }
-
