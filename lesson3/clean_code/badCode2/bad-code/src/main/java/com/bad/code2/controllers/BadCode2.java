@@ -11,7 +11,7 @@ public class BadCode2 {
 
         Square square = new Square(1d, 1d, 5d);
 
-        System.out.println("Square perimeter: " + square.getPerimeter());
+        System.out.println("Square perimeter: " + square.getArea());
     }
 
 }
