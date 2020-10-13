@@ -70,28 +70,6 @@ is 'Пол';
 comment on column students.school_id
 is 'ID школы';
 
-create table school_students (
-	school_id not null references schools(id),
-	student_id not null references students(id)
-);
-
-comment on column school_students.school_id
-is 'ID школы';
-
-comment on column school_students.student_id
-is 'ID студента';
-
-create table school_teachers (
-	school_id not null references schools(id),
-	teacher_id not null references teachers(id)
-);
-
-comment on column school_teachers.school_id
-is 'ID школы';
-
-comment on column school_teachers.teacher_id
-is 'ID учителя';
-
 create table subjects_teachers (
 	subject_id not null references subjects(id),
 	teacher_id not null references teachers(id)
