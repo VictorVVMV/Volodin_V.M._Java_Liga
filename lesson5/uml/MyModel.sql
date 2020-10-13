@@ -28,7 +28,8 @@ create table teachers(
     id integer not null primary key,
     name varchar(255) not null,
     age integer not null,
-    gender varchar(255) not null
+    gender varchar(255) not null,
+    school_id not null references schools(id)
 );
 
 comment on column teachers.id
@@ -43,11 +44,15 @@ is 'Возраст учителя';
 comment on column teachers.gender
 is 'Пол';
 
+comment on column teachers.school_id
+is 'ID школы';
+
 create table students(
     id integer not null primary key,
     name varchar(255) not null,
     age integer not null,
-    gender varchar(255) not null
+    gender varchar(255) not null,
+    school_id not null references schools(id)
 );
 
 comment on column students.id
@@ -61,6 +66,9 @@ is 'Возраст студента';
 
 comment on column students.gender
 is 'Пол';
+
+comment on column students.school_id
+is 'ID школы';
 
 create table school_students (
 	school_id not null references schools(id),
